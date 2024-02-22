@@ -30,7 +30,7 @@ let list_char s =
       aux s (i+1) b (if x=0 then l else (((Char.chr i),x)::l))
     )
   in
-  List.sort (fun x1 x2 -> if ((snd x1)<(snd x2)) then 1 else -1) (aux s 0 122 [])
+  List.sort (fun x1 x2 -> if ((snd x1)<(snd x2)) then 1 else -1) (aux s 0 126 [])
 in
 let rec pprint l = match l with
 []->()
@@ -84,7 +84,7 @@ let list_char s =
       aux s (i+1) b (if x=0 then l else (((Char.chr i),x)::l))
     )
   in
-  List.sort (fun x1 x2 -> if ((snd x1)<(snd x2)) then 1 else -1) (aux s 0 122 [])
+  List.sort (fun x1 x2 -> if ((snd x1)<(snd x2)) then 1 else -1) (aux s 0 126 [])
 in
 let rec pprint l = match l with
 []->()
