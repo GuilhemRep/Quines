@@ -22,6 +22,27 @@ let count s l =
   done;
   !c
 in
+let list_char s =
+  let rec aux s i b l =
+    if i>=b then l
+    else (
+      let x = count s (Char.chr i) in
+      aux s (i+1) b (if x=0 then l else (((Char.chr i),x)::l))
+    )
+  in
+  List.sort (fun x1 x2 -> if ((snd x1)<(snd x2)) then 1 else -1) (aux s 0 122 [])
+in
+let rec pprint l = match l with
+[]->()
+|t::q -> (
+  print_string \"It contains \";
+  print_int (snd t);
+  print_string \" times the character \\\"\";
+  print_char (fst t);
+  print_string \"\\\".\\n\";
+  pprint q
+)
+in
 print_newline();
 print_string \"My code is :\";
 print_newline();
@@ -29,13 +50,8 @@ print_newline();
 print_string (!code);
 print_newline();
 print_newline();
-for i=32 to 122 do
-  print_string \"It contains \";
-  print_int (count (!code) (Char.chr i));
-  print_string \" times the character \\\"\";
-  print_char (Char.chr i);
-  print_string \"\\\".\\n\"
-done;
+let l = list_char (!code) in
+pprint l;
 print_newline()"
 let () =
 let w = p() in
@@ -60,6 +76,27 @@ let count s l =
   done;
   !c
 in
+let list_char s =
+  let rec aux s i b l =
+    if i>=b then l
+    else (
+      let x = count s (Char.chr i) in
+      aux s (i+1) b (if x=0 then l else (((Char.chr i),x)::l))
+    )
+  in
+  List.sort (fun x1 x2 -> if ((snd x1)<(snd x2)) then 1 else -1) (aux s 0 122 [])
+in
+let rec pprint l = match l with
+[]->()
+|t::q -> (
+  print_string "It contains ";
+  print_int (snd t);
+  print_string " times the character \"";
+  print_char (fst t);
+  print_string "\".\n";
+  pprint q
+)
+in
 print_newline();
 print_string "My code is :";
 print_newline();
@@ -67,11 +104,6 @@ print_newline();
 print_string (!code);
 print_newline();
 print_newline();
-for i=32 to 122 do
-  print_string "It contains ";
-  print_int (count (!code) (Char.chr i));
-  print_string " times the character \"";
-  print_char (Char.chr i);
-  print_string "\".\n"
-done;
+let l = list_char (!code) in
+pprint l;
 print_newline()
