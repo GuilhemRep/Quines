@@ -7,4 +7,4 @@ all:
 	ocamlc -o stats stats.cmo
 
 clean:
-	rm -rf quine test sha concat *.cmi *.cmo *~
+	rm -rf minimal base stats *.cmi *.cmo *~
